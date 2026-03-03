@@ -1,0 +1,341 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #d6b3ff; /* lavender */
+  --primary-dark: #b58fff;
+  --secondary: #ffe0eb; /* blush pink */
+  --secondary-dark: #ffb3cd;
+  --accent: #fff3b0; /* pastel yellow */
+  --success: #a2e4a9;
+  --warning: #fbd38d;
+  --error: #f87171;
+  --neutral-50: #f9fafb;
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-500: #6b7280;
+  --neutral-700: #374151;
+  --neutral-900: #111827;
+
+  --bg-color: #fef5f0;
+  --page-bg: #f5e6d3;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e8d7c8;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* tooltip gradient theme variables */
+:root {
+  --tooltip-bg: rgba(255,255,255,0.85);
+  --tooltip-text: #333;
+}
+
+/* form validation errors */
+.input-error {
+  color: var(--error);
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  opacity: 0;
+  animation: fadeIn 0.2s forwards;
+}
+
+
+[data-theme='dark'] {
+  --primary: #60a5fa;
+  --primary-dark: #3b82f6;
+  --secondary: #a78bfa;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --neutral-50: #0f172a;
+  --neutral-100: #1e293b;
+  --neutral-200: #334155;
+  --neutral-300: #475569;
+  --neutral-500: #94a3b8;
+  --neutral-700: #cbd5e1;
+  --neutral-900: #f1f5f9;
+
+  --bg-color: #1e293b;
+  --page-bg: #0f172a;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --border-color: #334155;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  line-height: 1.5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Common Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background-color: #f5c8b8;
+  color: #6b3e2d;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #f0b5a0;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: var(--neutral-200);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--neutral-300);
+}
+
+.btn-danger {
+  background-color: var(--error);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+[data-theme='dark'] .badge-pending {
+  background-color: #78350f;
+  color: #fcd34d;
+}
+
+.badge-submitted {
+  background-color: #dbeafe;
+  color: #082f49;
+}
+
+[data-theme='dark'] .badge-submitted {
+  background-color: #0c2340;
+  color: #bfdbfe;
+}
+
+.badge-graded {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+[data-theme='dark'] .badge-graded {
+  background-color: #064e3b;
+  color: #d1fae5;
+}
+
+/* Cards */
+.card {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Loading Spinner */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--neutral-200);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-large {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+}
+
+/* Background gradients and effects for login */
+.login-background {
+  position: absolute;
+  inset: 0;
+  /* use absolute URL to the asset served by Vite */
+  background-image: url('/src/assets/login-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #f3e8ff;
+  z-index: 0;
+  overflow: hidden;  /* keep full-screen */
+}
+
+.login-background::before,
+.login-background::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  filter: none;
+}
+
+/* subtle color overlay to harmonize with UI (reduce to see image clearly) */
+.login-background::before {
+  inset: 0;
+  background: rgba(0,0,0,0);
+  mix-blend-mode: normal;
+  border-radius: 0;
+  filter: none;
+  opacity: 0;
+  z-index: 0;
+}
+
+
+
+.login-background::after {
+  width: 600px;
+  height: 600px;
+  background: rgba(255,255,255,0.2);
+  bottom: -150px;
+  right: -150px;
+}
+
+/* Layout for login page: center card and improve spacing */
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.login-page .card {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+  z-index: 20;
+}
+
+/* Slight decorative vignette to focus the card */
+.login-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.06) 0%, transparent 40%);
+  z-index: 5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
