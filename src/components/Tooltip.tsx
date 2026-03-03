@@ -1,4 +1,5 @@
-import React, { useState, ReactNode, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
+import type { ReactNode } from 'react';
 import './Tooltip.css';
 
 interface TooltipProps {
@@ -8,14 +9,18 @@ interface TooltipProps {
 
 const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
   const [visible, setVisible] = useState(false);
-  const timeoutRef = useRef<number>();
+  const timeoutRef = useRef<number | null>(null);
 
   const show = () => {
-    // short delay to avoid flicker
-    timeoutRef.current = window.setTimeout(() => setVisible(true), 100);
+    timeoutRef.current = window.setTimeout(() => {
+      setVisible(true);
+    }, 100);
   };
+
   const hide = () => {
-    clearTimeout(timeoutRef.current);
+    if (timeoutRef.current !== null) {
+      clearTimeout(timeoutRef.current);
+    }
     setVisible(false);
   };
 
